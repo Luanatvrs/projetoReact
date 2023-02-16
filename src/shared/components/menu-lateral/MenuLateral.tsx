@@ -12,6 +12,7 @@ import {
     useTheme 
 } from '@mui/material';
 import { Box } from '@mui/system';
+import { useDrawerContext } from '../../contexts/DrawerContext';
 
 
 interface TelaMenu{
@@ -21,10 +22,11 @@ interface TelaMenu{
 export const MenuLateral: React.FC < TelaMenu > = ({children}) => {
     const theme = useTheme();
     const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+    const {isDrawerOpen, toggleDrawerOpen} = useDrawerContext();
 
     return(
         <>
-            <Drawer open={true} variant={smDown ? 'temporary' : 'permanent'}> 
+            <Drawer open={isDrawerOpen} variant={smDown ? 'temporary' : 'permanent'} onClose={toggleDrawerOpen}> 
                 <Box width={theme.spacing(28)}>
 
                     <Box width='100%' height={theme.spacing(20)} display='flex' alignItems='center' justifyContent='center'>
