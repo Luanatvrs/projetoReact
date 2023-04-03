@@ -52,7 +52,7 @@ const ListItemLink : React.FC <IListItemLinkProps> = ({to, icon, label, onClick}
 
 export const MenuLateral: React.FC < TelaMenu > = ({children}) => {
     const theme = useTheme();
-    const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+    const smDown = useMediaQuery(theme.breakpoints.down('sm')); //descobrir o tamanho da tela
 
     
     const {isDrawerOpen, toggleDrawerOpen, drawerOptions} = useDrawerContext();
@@ -68,15 +68,15 @@ export const MenuLateral: React.FC < TelaMenu > = ({children}) => {
 
                     <Box flex={1}>
                         <List component="nav">
-                        {drawerOptions.map( drawerOptions => (
-                            <ListItemLink
-                                key={drawerOptions.path}
-                                icon={drawerOptions.icon}
-                                to={drawerOptions.path}
-                                label={drawerOptions.label}
-                                onClick={smDown ? toggleDrawerOpen : undefined}
-                            />
-                        ))}
+                            {drawerOptions.map( drawerOptions => (
+                                <ListItemLink
+                                    key={drawerOptions.path}
+                                    icon={drawerOptions.icon}
+                                    to={drawerOptions.path}
+                                    label={drawerOptions.label}
+                                    onClick={smDown ? toggleDrawerOpen : undefined}
+                                />
+                            ))}
                         </List>
                     </Box>
 
